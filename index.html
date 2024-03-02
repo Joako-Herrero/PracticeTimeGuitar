@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <title>Practice Time Guitar</title>
+</head>
+<body>
+    <h1>Practice Time Guitar</h1>
+
+    <div class="component">
+        <!-- Start Nav Structure -->
+        <button class="cn-button" id="cn-button">+</button>
+
+        <div class="cn-wrapper" id="cn-wrapper">
+
+            <ul id="keys" class="major">
+                <li class="key">
+                    <a href="#">
+                        <span>F</span> 
+
+                    </a>
+                </li>
+                <li class="key active"><a href="#"><span>C</span> 
+                </a></li>
+                <li class="key"><a href="#"><span>G</span> 
+                </a></li>
+                <li class="key"><a href="#"><span>D</span> 
+                </a></li>
+                <li class="key"><a href="#"><span>A</span> 
+                </a></li>
+                <li class="key"><a href="#"><span>E</span> 
+                </a></li>
+                <li class="key"><a href="#"><span>B</span> 
+                </a></li>
+                <li class="key sharp"><a href="#"><span>F</span> 
+                </a></li>
+                <li class="key flat"><a href="#"><span>B</span> 
+                </a></li>
+                <li class="key flat"><a href="#"><span>E</span> 
+                </a></li>
+                <li class="key flat"><a href="#"><span>A</span> 
+                </a></li>
+                <li class="key flat"><a href="#"><span>D</span> 
+                </a></li>
+            </ul>
+        </div>
+
+        <div id="cn-overlay" class="cn-overlay">
+            
+        </div>
+
+            <div id="mode">
+                <!-- Defaults to major -->
+                <div class="major active">
+                    <span>I</span> 
+
+                    <span>ii</span> 
+
+                    <span>iii</span> 
+
+                    <span>IV</span> 
+
+                    <span>V</span> 
+
+                    <span class="rel-min">vi</span> 
+
+                    <span class="dim">vii</span> 
+
+                </div>
+                <div class="minor">
+                    <span>i</span> 
+
+                    <span class="dim">ii</span> 
+
+                    <span class="rel-maj">III</span> 
+
+                    <span>iv</span> 
+
+                    <span>v</span> 
+
+                    <span>VI</span> 
+
+                    <span>VII</span> 
+
+                </div>
+
+                <span id="scale"></span> 
+
+                <ul id="mode_type">
+                    <li id="major" class="active">Major</li>
+                    <li id="minor">Minor</li>
+                </ul>
+            </div>
+
+            <!-- End Nav Structure -->
+    </div>
+
+    <label class="select-pattern">
+        <div class="tiny">
+            <span class="strumming-help">strumming pattern (▼ down, ᐃ up, - mute, x chuck)</span> 
+
+            <span class="picking-help" hidden="">finger picking pattern (4 - top G string, 1 - bottom A string)</span> 
+
+        </div>
+        <select id="strumming">
+            <option>
+                <span data-type="d">▼</span> 
+
+                <span data-type="-">⏤</span> 
+
+                <span data-type="d">▼</span> 
+
+                <span data-type="u">ᐃ</span> 
+
+                <span data-type="-">⏤</span> 
+
+                <span data-type="u">ᐃ</span> 
+
+                <span data-type="d">▼</span> 
+
+                <span data-type="-">⏤</span> 
+
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+
+                <span data-type="-">⏤</span> 
+
+                <span data-type="d">▼</span> 
+
+                <span data-type="u">ᐃ</span> 
+
+                <span data-type="-">⏤</span> 
+                 <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="x"> x </span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="U">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="U">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="x"> x </span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="x"> x </span> 
+                <span data-type="u">ᐃ</span> 
+            </option>
+            <option>
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+            </option>
+            <option>
+                <span data-type="-">⏤</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="u">ᐃ</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="-">⏤</span> 
+                <span data-type="d">▼</span> 
+                <span data-type="-">⏤</span> 
+            </option>
+            <option disabled="">
+                <span data-type="finger picking">finger picking</span> 
+            </option>
+            <option>
+                <span data-type="4">4</span> 
+                <span data-type="2">2</span> 
+                <span data-type="3">3</span> 
+                <span data-type="1">1</span> 
+            </option>
+            <option>
+                <span data-type="1">1</span> 
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+                <span data-type="4">4</span> 
+            </option>
+            <option>
+                <span data-type="4">4</span> 
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+                <span data-type="1">1</span> 
+            </option>
+            <option>
+                <span data-type="4">4</span> 
+                <span data-type="1">1</span> 
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+            </option>
+            <option>
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+                <span data-type="4">4</span> 
+                <span data-type="1">1</span> 
+                <span data-type="4">4</span> 
+                <span data-type="2">2</span> 
+            </option>
+            <option>
+                <span data-type="1">1</span> 
+                <span data-type="4">4</span> 
+                <span data-type="2">2</span> 
+                <span data-type="1">1</span> 
+                <span data-type="4">4</span> 
+                <span data-type="2">2</span> 
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+            </option>
+            <option>
+                <span data-type="1">1</span> 
+                <span data-type="4">4</span> 
+                <span data-type="2">2</span> 
+                <span data-type="3">3</span> 
+                <span data-type="2">2</span> 
+                <span data-type="4">4</span> 
+            </option>
+            </select>
+   
+        
+    </span> 
+
+    </label>
+    <div class="container">
+        <section class="metronome-container">
+            <div class="counter"></div>
+            
+            <i class="fa fa-cog options-btn"></i>
+        
+            <div class="controls">
+            <label>BPM: <span>
+                            <i class="fa fa-minus bpm-minus"></i>
+                            <input type="text" value="60" class="bpm-input" />
+                            <i class="fa fa-plus bpm-plus"></i>
+                        </span>
+            </label>
+            <label>
+                Beat: <input type="text" value="4" class="ts-top" /></label>
+            <div style="margin-bottom: 15px;">
+                <input type="checkbox" id="timer-check" />
+                <label for="timer-check"></label>
+                
+                Timer: <input type="text" value="60" class="timer" />
+            </div>
+        
+            <button class="tap-btn">Tap</button>
+            <button class="play-btn">Play</button>
+            </div>
+            
+            <div class="options">
+            <i class="fa fa-caret-down up"></i>
+            <label>Off Beat Pitch: <input type="range" min="0" max="500" value="200" class="beat-range" /></label>
+            <label>Accent Pitch: <input type="range" min="0" max="500" value="380" class="accent-range" /></label>
+            </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
